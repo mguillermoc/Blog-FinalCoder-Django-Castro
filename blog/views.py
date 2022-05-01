@@ -28,7 +28,7 @@ def login_request(request):
 
             if user is not None:
                 login(request, user)
-                return render(request, 'page.html', {'mensaje':f'bienbenido {usuario}'} )
+                return render(request, 'page.html', {'mensaje':f'bienvenido {usuario}'} )
             else:
                 return render(request, 'page.html', {'mensaje':'Error datos incorrectos'} )
         else:

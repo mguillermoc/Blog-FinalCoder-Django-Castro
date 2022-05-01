@@ -15,20 +15,26 @@
         </div>
     </header>
 <body>
-
+<div class="container px-4 px-lg-5">
+ <div class="row gx-4 gx-lg-5 justify-content-center">
+    <div class="col-md-10 col-lg-8 col-xl-7">
     {% for article in object_list %}
     <div class="post-preview">
         <h2 class="post-title">{{article.titulo}}</h2>
         <h3 class="post-subtitle">{{article.abstract}}</h3>
         <p class="post-meta">{{article.creado}}</p>
         <p>
-            <a href="{% url 'Detail' article.id %}">Leer. Más</a>
-            {% comment %} <a href="{% url 'Edit' article.id %}">Editar</a>
-            <a href="{% url 'Delete' article.id %}">Borrar</a> {% endcomment %}
+            <button type="button" class="btn btn-primary"><a href="{% url 'Detail' article.id %}" style="color:white; text-decoration:none;">Leer. Más</a></button>
+            {% if user.is_superuser %}
+            <button type="button" class="btn btn-primary"><a href="{% url 'Detail' article.id %}" style="color:white; text-decoration:none;">Editar</a></button>
+            <button type="button" class="btn btn-primary"><a href="{% url 'Detail' article.id %}" style="color:white; text-decoration:none;">Borrar</a></button>
+            {% endif %}
         </p>
         <!-- Divider-->
         <hr class="my-4" />
     {% endfor %}
-
+        </div>
+    </div>
+</div>
 </body>
 {% endblock main_content %}
