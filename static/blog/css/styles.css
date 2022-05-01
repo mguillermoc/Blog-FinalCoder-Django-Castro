@@ -154,6 +154,7 @@ h6, .h6 {
 }
 
 p {
+  text-align: justify;
   margin-top: 0;
   margin-bottom: 1rem;
 }

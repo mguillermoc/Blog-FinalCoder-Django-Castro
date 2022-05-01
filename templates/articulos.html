@@ -2,7 +2,7 @@
 {% load static%}
 {% block main_content %}
      <!-- Page Header-->
-     <header class="masthead" style="background-image: url('Blog-FinalCoder-Django-Castro\static\blog\assets\img\home-bg.jpg')">
+     <header class="masthead" style="background-image: url('https://cdn2.whatoplay.com/screenshots/49806_1586244286slide-1.jpg')">
         <div class="container position-relative px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
@@ -24,10 +24,10 @@
         <h3 class="post-subtitle">{{article.abstract}}</h3>
         <p class="post-meta">{{article.creado}}</p>
         <p>
-            <button type="button" class="btn btn-primary"><a href="{% url 'Detail' article.id %}" style="color:white; text-decoration:none;">Leer. Más</a></button>
+            <button type="button" class="btn btn-primary"><a href="{% url 'Detail' article.id %}" style="color:white; text-decoration:none;">Leer Más</a></button>
             {% if user.is_superuser %}
-            <button type="button" class="btn btn-primary"><a href="{% url 'Detail' article.id %}" style="color:white; text-decoration:none;">Editar</a></button>
-            <button type="button" class="btn btn-primary"><a href="{% url 'Detail' article.id %}" style="color:white; text-decoration:none;">Borrar</a></button>
+            <button type="button" class="btn btn-primary"><a href="{% url 'art_Edit' article.id %}" style="color:white; text-decoration:none;">Editar</a></button>
+            <button type="button" class="btn btn-primary"><a href="{% url 'art_Delete' article.id %}" style="color:white; text-decoration:none;">Borrar</a></button>
             {% endif %}
         </p>
         <!-- Divider-->

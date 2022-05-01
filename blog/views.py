@@ -6,8 +6,6 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, User
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 
-
-
 def inicio(request):
     plantilla=loader.get_template('page.html')
     documento=plantilla.render()
@@ -15,8 +13,8 @@ def inicio(request):
 
 def about(request):
     plantilla=loader.get_template('about.html')
-    documento=plantilla.render()
-    return HttpResponse(documento)
+    documentos=plantilla.render()
+    return HttpResponse(documentos)
 
 def login_request(request):
     if request.method == 'POST':

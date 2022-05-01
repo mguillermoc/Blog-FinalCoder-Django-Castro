@@ -14,7 +14,13 @@
     </div>
 </header>
 <body>
-    
+    <div class="container px-4 px-lg-5" style="margin: 50px auto;">
+    <form method="post">
+        {% csrf_token%}
+        <p>¿Estas seguro que quieres borrar el articulo "{{object}}"?</p>
+        <input type="submit" value="Confirmar" class="btn btn-primary">
+    </form>
+</div>
 </body>
 {% endblock main_content %}
 </html>

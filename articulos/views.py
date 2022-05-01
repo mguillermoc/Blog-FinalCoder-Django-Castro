@@ -19,15 +19,15 @@ class ArticuloDetalle(DetailView):
 
 class creararticulo(CreateView):
     model=article
-    succes_url='creararticulo.html'
-    fields = ['titulo', 'abstract', 'articulo']
+    success_url='/articulos/'
+    fields = ['titulo', 'abstract', 'articulo', 'autor']
 
 class modarticulo(UpdateView):
     model=article
-    succes_url='modarticulo.html'
+    success_url='/articulos/'
     fields = ['titulo', 'abstract', 'articulo']
 
 class deletearticulo(DeleteView):
     model=article
-    succes_url='deletearticulo.html'
+    success_url='/articulos/'
 
