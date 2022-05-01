@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leer Más</title>
+</head>
+<body>
+   <h1>{{article.titulo}}</h1>
+   <i>{{article.abstract}}</i> 
+   <i>Publicado {{article.creado}}</i> 
+   <br>
+   {{article.articulo}}
+   <br>
+   <button> <a href=" {% url 'List'%}">VOLVER</a> </button>
+</body>
+</html>

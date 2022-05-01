@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sala de chat</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <h2>{{sala}}</h2>
+    <div id="display">
+
+    </div>
+    <script>
+        $(document).ready(function(){
+        
+        setInterval(function(){
+            $.ajax({
+                type: 'GET',
+                url : "/getmensajes/{{Sala}}/",
+                success: function(response){
+                    console.log(response);
+                    $("#display").empty();
+                    for (var key in response.messages)
+                    {
+                        var temp="<div class='container darker'><b>"+response.messages[key].user+"</b><p>"+response.messages[key].value+"</p><span class='time-left'>"+response.messages[key].date+"</span></div>";
+                        $("#display").append(temp);
+                    }
+                },
+                error: function(response){
+                    alert('An error occured')
+                }
+            });
+        },1000);
+        })
+        </script>
+    <form id="post-form">
+        {% csrf_token %}
+        <input type="hidden" name="usuario" id="usuario" value="{{usuario}}"/>
+        <input type="hidden" name="sala_id" id="sala_id" value="{{Detalle_Sala.id}}"/>
+        <input type="text" name="mensaje" id="mensaje" width="100px"/>
+        <input type="submit" value="send">
+    </form>
+
+</body>
+<script type="text/javascript">
+    $(document).on('submit','#post-form',function(e){
+      e.preventDefault();
+  
+      $.ajax({
+        type:'POST',
+        url:'/send',
+        data:{
+            username:$('#usuario').val(),
+            sala_id:$('#sala_id').val(),
+            mensaje:$('#mensaje').val(),
+          csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+        },
+        success: function(data){
+           alert(data)
+        }
+      });
+      document.getElementById('mensaje').value = ''
+    });
+  </script>
+</html>
