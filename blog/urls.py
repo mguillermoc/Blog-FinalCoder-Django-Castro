@@ -16,12 +16,13 @@ Including another URLconf
 from re import template
 from django.contrib import admin
 from django.urls import path, include
-from blog.views import inicio, login_request, register, editarperfil
+from blog.views import inicio, login_request, register, editarperfil, about
 from django.contrib.auth.views import LogoutView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('about/', about),
     path('', inicio),
     path('chat/', include('chat.urls')),
     path('articulos/', include('articulos.urls')),

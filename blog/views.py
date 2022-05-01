@@ -7,8 +7,14 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 
 
+
 def inicio(request):
     plantilla=loader.get_template('page.html')
+    documento=plantilla.render()
+    return HttpResponse(documento)
+
+def about(request):
+    plantilla=loader.get_template('about.html')
     documento=plantilla.render()
     return HttpResponse(documento)
 

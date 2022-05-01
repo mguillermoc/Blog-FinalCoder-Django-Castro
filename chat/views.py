@@ -24,11 +24,11 @@ def revision(request):
     Sala = request.POST['nombre_sala']
     Username = request.POST['usuario']
     if sala.objects.filter(nombre=Sala) is not None:
-        return redirect('/'+Sala+'/?usuario='+Username)
+        return redirect('/'+Sala+'/?username='+Username) #VERRRR
     else:
         nueva_sala= sala.objects.create(nombre=Sala)
         nueva_sala.save
-        return redirect('/'+Sala+'/?usuario='+Username)
+        return redirect('/'+Sala+'/?username='+Username) #VERRRR
 
 @login_required
 def enviado(request):

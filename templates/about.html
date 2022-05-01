@@ -16,19 +16,5 @@
     </header>
 <body>
 
-    {% for article in object_list %}
-    <div class="post-preview">
-        <h2 class="post-title">{{article.titulo}}</h2>
-        <h3 class="post-subtitle">{{article.abstract}}</h3>
-        <p class="post-meta">{{article.creado}}</p>
-        <p>
-            <a href="{% url 'Detail' article.id %}">Leer. Más</a>
-            {% comment %} <a href="{% url 'Edit' article.id %}">Editar</a>
-            <a href="{% url 'Delete' article.id %}">Borrar</a> {% endcomment %}
-        </p>
-        <!-- Divider-->
-        <hr class="my-4" />
-    {% endfor %}
-
 </body>
 {% endblock main_content %}
