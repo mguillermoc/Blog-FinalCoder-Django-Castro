@@ -39,6 +39,9 @@
                         <li><button type="button" class="btn btn-primary" style="margin-left: 10px;"><a href="/editarperfil" style="color:white; text-decoration:none;">👤 Mi perfil</a></button></li>  
                         <li><button type="button" class="btn btn-primary" style="margin-left: 10px;"><a href="/logout" style="color:white; text-decoration:none;">Salir</a></button></li>
                         {% endif %}
+                        {% if user.is_superuser %}
+                        <li><button type="button" class="btn btn-primary" style="margin-left: 10px;"><a href="/articulos/nuevo" style="color:white; text-decoration:none;">Nuevo Articulo</a></button></li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
