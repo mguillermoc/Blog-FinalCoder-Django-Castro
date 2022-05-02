@@ -14,10 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from re import template
+from xml.dom.minidom import Document
+from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
 from blog.views import inicio, login_request, register, editarperfil, about
 from django.contrib.auth.views import LogoutView
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -31,3 +34,5 @@ urlpatterns = [
     path('logout', LogoutView.as_view(template_name='logout.html'), name='Logout'),
     path('editarperfil', editarperfil, name='EditarPerfil')
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

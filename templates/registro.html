@@ -1,7 +1,7 @@
 {% extends 'static\blog\base.html' %}
 {% load static%}
 {% block main_content %}
-<header class="masthead" style="background-image: url('Blog-FinalCoder-Django-Castro\static\blog\assets\img\home-bg.jpg')">
+<header class="masthead" style="background-image: url('https://images5.alphacoders.com/100/thumb-1920-1000939.jpg')">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
@@ -14,11 +14,13 @@
     </div>
 </header>
 <body>
+    <div class="container px-4 px-lg-5" style="margin: 50px auto;">
     <form action="" method="POST">
         {% csrf_token %}
         {{form.as_p}}
-        <button type="submit"> Registrate</button>
-    </form>    
+        <button type="submit" class="btn btn-primary"> Registrate</button>
+    </form>
+</div>    
 </body>
 {% endblock main_content %}
 </html>

@@ -1,12 +1,12 @@
 {% extends 'static\blog\base.html' %}
 {% load static%}
 {% block main_content %}
-<header class="masthead" style="background-image: url('Blog-FinalCoder-Django-Castro\static\blog\assets\img\home-bg.jpg')">
+<header class="masthead" style="background-image: url('https://images5.alphacoders.com/100/thumb-1920-1000939.jpg')">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
-                    <h1>Blog</h1>
+                    <h1>Editar Perfil</h1>
                     <span class="subheading">{{mensaje}}</span>
                 </div>
             </div>
@@ -14,15 +14,17 @@
     </div>
 </header>
 <body>
+    <div class="container px-4 px-lg-5" style="margin: 50px auto;">
     <h1>Formulario Editar Perfil</h1>
-    <h1>De {{usuario}}</h1>
+    <h2>De {{usuario}}</h2>
     <form action="" method="¨POST">
         {% csrf_token %}
         <table>
             {{ miFormulario.as_table}}
         </table>
-        <input type="submit", value='enviar'>
+        <input type="submit", value='enviar' class="btn btn-primary" style="margin: 50px auto;">
     </form>
+</div>
 </body>
 {% endblock main_content %}
 </html>
