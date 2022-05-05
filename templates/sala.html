@@ -1,37 +1,63 @@
 {% extends 'static\blog\base.html' %}
 {% load static%}
 {% block main_content %}
+<style>
+.container1 {
+  width: 50%;  
+  border: 2px solid #dedede;
+  background-color: #56d3e9;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 10px;
+}
+
+.darker1 {
+  border-color: #ccc;
+  background-color: rgb(124, 236, 171);
+}
+.time-left {
+  color: #999;
+}
+
+</style>
+
+
+<script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
 <header class="masthead" style="background-image: url('https://i.ytimg.com/vi/_ITiwPMUzho/maxresdefault.jpg')">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="site-heading">
                     <h1>Sala</h1>
-                    <h2>{{sala.nombre}}</h2>
-                    <span class="subheading">{{mensaje}}</span>
+                    <span class="subheading"></span><h2>{{sala}}</h2></span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 <body>
-    <h2>{{sala}}</h2>
-    <div id="display">
+    <div class="container px-4 px-lg-5" style="margin: 50px auto;">   
+<div id="display">
 
-    </div>
+        <!-- <div class="container darker">
+          <b>Tom</b><p>Hello Everyone, How Are You Guys Doing?</p>
+          <span class="time-left">20th, April 2021</span>
+        </div> -->
+        
+</div>
     <script>
         $(document).ready(function(){
         
         setInterval(function(){
             $.ajax({
                 type: 'GET',
-                url : "/getmensajes/{{Sala}}/",
+                url : "/messages/getmensajes/{{sala}}/",
                 success: function(response){
                     console.log(response);
                     $("#display").empty();
-                    for (var key in response.messages)
+                    for (var key in response.Mensajes)
                     {
-                        var temp="<div class='container darker'><b>"+response.messages[key].user+"</b><p>"+response.messages[key].value+"</p><span class='time-left'>"+response.messages[key].date+"</span></div>";
+                        var temp="<div class='container1 darker1'><b>"+response.Mensajes[key].usuario+"</b><p>"+response.Mensajes[key].value+"</p><span class='time-left'>"+response.Mensajes[key].date+"</span></div>";
                         $("#display").append(temp);
                     }
                 },
@@ -42,34 +68,38 @@
         },1000);
         })
         </script>
+
+
     <form id="post-form">
         {% csrf_token %}
         <input type="hidden" name="usuario" id="usuario" value="{{usuario}}"/>
-        <input type="hidden" name="sala_id" id="sala_id" value="{{Detalle_Sala.id}}"/>
+        <input type="hidden" name="sala_id" id="sala_id" value="{{detalle_Sala.id}}"/>
         <input type="text" name="mensaje" id="mensaje" width="100px"/>
-        <input type="submit" value="send" class="btn btn-primary">
+        <input type="submit" value="enviado" class="btn btn-primary">
     </form>
 
+    <script type="text/javascript">
+        $(document).on('submit','#post-form',function(e){
+          e.preventDefault();
+      
+          $.ajax({
+            type:'POST',
+            url:'/messages/enviado',
+            data:{
+                usuario:$('#usuario').val(),
+                sala_id:$('#sala_id').val(),
+                mensaje:$('#mensaje').val(),
+              csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+            },
+            success: function(data){
+               alert(data)
+            }
+          });
+          document.getElementById('mensaje').value = ''
+        });
+      </script>
+    </div>
 </body>
 {% endblock main_content %}
-<script type="text/javascript">
-    $(document).on('submit','#post-form',function(e){
-      e.preventDefault();
-  
-      $.ajax({
-        type:'POST',
-        url:'/send',
-        data:{
-            username:$('#usuario').val(),
-            sala_id:$('#sala_id').val(),
-            mensaje:$('#mensaje').val(),
-          csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
-        },
-        success: function(data){
-           alert(data)
-        }
-      });
-      document.getElementById('mensaje').value = ''
-    });
-  </script>
+
 </html>

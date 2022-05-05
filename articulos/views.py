@@ -20,7 +20,7 @@ class ArticuloDetalle(DetailView):
 class creararticulo(CreateView):
     model=article
     success_url='/articulos/'
-    fields = ['titulo', 'abstract', 'articulo', 'autor','imageurl' ]
+    fields = ['titulo', 'abstract', 'articulo', 'autor','image' ]
 
 class modarticulo(UpdateView):
     model=article

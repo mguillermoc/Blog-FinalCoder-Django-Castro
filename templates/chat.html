@@ -1,6 +1,7 @@
-{% extends 'static\blog\base.html' %}
+{% extends 'static/blog/base.html' %}
 {% load static%}
 {% block main_content %}
+  
 <header class="masthead" style="background-image: url('https://i.ytimg.com/vi/f02mOEt11OQ/maxresdefault.jpg')">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -15,6 +16,7 @@
 </header>
 <body>
     <div class="container px-4 px-lg-5" style="margin: 50px auto;">
+
     <form id="post-form" method="POST" action="revision">
         {% csrf_token %}
         <label>Nombre de la sala</label>
@@ -24,7 +26,10 @@
 
         <input type="submit" value="Entrar a la sala" class="btn btn-primary" style="margin: 50px auto;">
     </form>
+
 </div>
+
+
 </body>
 {% endblock main_content %}
 </html>

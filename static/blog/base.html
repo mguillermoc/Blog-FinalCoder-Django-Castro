@@ -30,14 +30,14 @@
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/">Inicio</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/about">Acerca de mí</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/articulos">Articulos</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/chat">Foro</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/messages">Foro</a></li>
                         {% if not request.user.is_authenticated %}
-                        <li><button type="button" class="btn btn-primary"><a href="/login" style="color:white; text-decoration:none;">Entrar</a></button></li>
-                        <li><button type="button" class="btn btn-primary" style="margin-left: 10px;"><a href="/register" style="color:white; text-decoration:none;">Registrarme</a></button></li>
+                        <li><button type="button" class="btn btn-primary"><a href="/accounts/login" style="color:white; text-decoration:none;">Entrar</a></button></li>
+                        <li><button type="button" class="btn btn-primary" style="margin-left: 10px;"><a href="/accounts/register" style="color:white; text-decoration:none;">Registrarme</a></button></li>
                         {% endif %}
                         {% if request.user.is_authenticated %}
-                        <li><button type="button" class="btn btn-primary" style="margin-left: 10px;"><a href="/editarperfil" style="color:white; text-decoration:none;">👤 Mi perfil</a></button></li>  
-                        <li><button type="button" class="btn btn-primary" style="margin-left: 10px;"><a href="/logout" style="color:white; text-decoration:none;">Salir</a></button></li>
+                        <li><button type="button" class="btn btn-primary" style="margin-left: 10px;"><a href="/accounts/editarperfil" style="color:white; text-decoration:none;">👤 Mi perfil</a></button></li>  
+                        <li><button type="button" class="btn btn-primary" style="margin-left: 10px;"><a href="/accounts/logout" style="color:white; text-decoration:none;">Salir</a></button></li>
                         {% endif %}
                         {% if user.is_superuser %}
                         <li><button type="button" class="btn btn-primary" style="margin-left: 10px;"><a href="/articulos/nuevo" style="color:white; text-decoration:none;">Nuevo Articulo</a></button></li>

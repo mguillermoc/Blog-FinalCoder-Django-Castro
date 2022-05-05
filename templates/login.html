@@ -1,4 +1,4 @@
-{% extends 'static\blog\base.html' %}
+{% extends 'static/blog/base.html' %}
 {% load static%}
 {% block main_content %}
 <header class="masthead" style="background-image: url('https://images5.alphacoders.com/100/thumb-1920-1000939.jpg')">
@@ -14,7 +14,7 @@
     </div>
 </header>
 <body>
-    
+    <div class="container px-4 px-lg-5" style="margin: 50px auto;">
     <form action="" method="POST">
         {% csrf_token %}
         {{form.as_p}}

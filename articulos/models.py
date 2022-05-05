@@ -18,7 +18,7 @@ class article(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
     )
-    imageurl=models.CharField(max_length=280)
+    image = models.ImageField(upload_to='thumbnail', null=True, blank=True)
 
     def __str__(self):
         return f'{self.titulo} - {self.autor} - {self.creado} '

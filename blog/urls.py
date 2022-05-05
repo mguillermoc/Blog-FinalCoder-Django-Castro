@@ -27,12 +27,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('about', about),
     path('', inicio),
-    path('chat/', include('chat.urls')),
+    path('messages/', include('chat.urls')),
     path('articulos/', include('articulos.urls')),
-    path('login', login_request, name='login'),
-    path('register', register, name='register'),
-    path('logout', LogoutView.as_view(template_name='logout.html'), name='Logout'),
-    path('editarperfil', editarperfil, name='EditarPerfil')
+    path('accounts/login/', login_request, name='login'),
+    path('accounts/register/', register, name='register'),
+    path('accounts/logout/', LogoutView.as_view(template_name='logout.html'), name='Logout'),
+    path('accounts/editarperfil', editarperfil, name='EditarPerfil')
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
